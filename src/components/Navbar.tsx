@@ -1,0 +1,19 @@
+'use client';
+
+import Link from 'next/link';
+import { Menu, Search, X } from 'lucide-react';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { useState } from 'react';
+
+const links = [['About', '/about'], ['Projects', '/projects'], ['Gallery', '/gallery'], ['Members', '/members'], ['News & Articles', '/news'], ['Contact', '/contact']];
+
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  return <header className="sticky top-0 z-50 border-b border-slate-200 bg-white text-[#0A2350] shadow-sm">
+    <div className="container-shell flex h-[76px] items-center justify-between gap-4"><Link href="/" aria-label="Rotaract Club of Kasthamandap home" onClick={() => setOpen(false)}><img src="/images/logo-rotaract.svg" alt="Rotaract Club of Kasthamandap" className="h-12 w-auto" /></Link><nav className="hidden items-center gap-5 xl:flex">{links.map(([label, href]) => <Link key={href} href={href} className="text-xs font-bold uppercase tracking-[0.08em] text-[#0A2350] transition hover:text-[#17458F]">{label}</Link>)}</nav><div className="hidden items-center gap-2 md:flex"><button aria-label="Open search" onClick={() => setSearchOpen(true)} className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-[#17458F] hover:border-[#F7A81B]"><Search size={17} /></button><a href="#" aria-label="Facebook" className="grid h-9 w-9 place-items-center text-[#17458F] hover:text-[#F7A81B]"><FaFacebookF /></a><a href="#" aria-label="Instagram" className="grid h-9 w-9 place-items-center text-[#17458F] hover:text-[#F7A81B]"><FaInstagram /></a><Link href="/join" className="rounded-full bg-[#F7A81B] px-4 py-2.5 text-sm font-bold text-[#0A2350] hover:bg-[#17458F] hover:text-white">Join Us</Link><Link href="/donate" className="rounded-full border border-[#17458F] px-4 py-2.5 text-sm font-bold text-[#17458F] hover:bg-[#17458F] hover:text-white">Donate</Link></div><button className="grid h-10 w-10 place-items-center xl:hidden" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div>
+    {open && <div className="border-t border-slate-200 bg-white px-4 pb-5 xl:hidden"><nav className="container-shell flex flex-col gap-1 py-3">{links.map(([label, href]) => <Link onClick={() => setOpen(false)} key={href} href={href} className="rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-[0.08em] hover:bg-[#F5F7FA]">{label}</Link>)}<button onClick={() => setSearchOpen(true)} className="flex items-center gap-2 rounded-lg px-3 py-3 text-left text-sm font-bold"><Search size={16} /> Search</button><div className="mt-3 flex gap-2 border-t border-slate-200 pt-4"><Link href="/join" className="flex-1 rounded-full bg-[#F7A81B] py-3 text-center text-sm font-bold text-[#0A2350]">Join Us</Link><Link href="/donate" className="flex-1 rounded-full border border-[#17458F] py-3 text-center text-sm font-bold text-[#17458F]">Donate</Link></div></nav></div>}
+    {searchOpen && <div role="dialog" aria-modal="true" aria-label="Site search" className="absolute left-0 right-0 top-full border-b border-slate-200 bg-white p-4 shadow-xl"><div className="container-shell flex items-center gap-3"><Search className="text-[#17458F]" size={20} /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search projects, members and stories" className="min-w-0 flex-1 border-0 text-base outline-none" /><button aria-label="Close search" onClick={() => { setSearchOpen(false); setQuery(''); }} className="grid h-9 w-9 place-items-center rounded-full bg-[#F5F7FA]"><X size={18} /></button></div>{query && <p className="container-shell mt-3 text-sm text-slate-500">Search is available on the Projects, Gallery, Members and News & Articles pages.</p>}</div>}
+  </header>;
+}

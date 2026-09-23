@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --rotary-blue: #17458f;
+  --rotary-deep: #0a2350;
+  --rotary-gold: #f7a81b;
+  --ink: #24334a;
+  --muted: #66758a;
+  --paper: #f5f7fa;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: white; font-family: 'DM Sans', sans-serif; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.font-display { font-family: 'Libre Baskerville', serif; }
+.container-shell { width: 100%; max-width: 1280px; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
+.eyebrow { color: var(--rotary-blue); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.hero-banner { min-height: 280px; display: flex; align-items: center; background: var(--rotary-deep); color: white; }
+.hero-banner h1 { font-size: clamp(2rem, 4vw, 3rem); }
+img { display: block; max-width: 100%; }
+.fade-up { animation: fadeUp 700ms ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (min-width: 640px) { .container-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .container-shell { padding-left: 2rem; padding-right: 2rem; } }
