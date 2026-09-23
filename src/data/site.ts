@@ -19,27 +19,27 @@ export const site = {
 };
 
 export const projects = [
-  { id: 'hospice-care', title: 'Hospice Care Initiative', summary: 'A dignified, compassionate home for patients and families navigating life-limiting illness.', date: '2026-11-15', status: 'upcoming', avenue: 'Service', location: 'Kathmandu', image: '/images/project-service.svg', featured: true },
-  { id: 'school-library', title: 'Books Open Doors', summary: 'Building joyful reading corners in community schools across the Kathmandu Valley.', date: '2026-08-24', status: 'active', avenue: 'Youth', location: 'Bhaktapur', image: '/images/project-youth.svg', featured: false },
-  { id: 'clean-water', title: 'Every Drop Counts', summary: 'Reliable clean water access for families in the hills around Kathmandu.', date: '2026-06-18', status: 'completed', avenue: 'Service', location: 'Kavre', image: '/images/project-water.svg', featured: false },
-  { id: 'career-circle', title: 'Career Circle', summary: 'Practical mentoring conversations connecting young people with local professionals.', date: '2026-05-12', status: 'completed', avenue: 'Professional', location: 'Kathmandu', image: '/images/project-professional.svg', featured: false },
-  { id: 'community-table', title: 'Community Table', summary: 'An open evening of food, listening and fellowship with neighborhood partners.', date: '2026-04-09', status: 'completed', avenue: 'Fellowship', location: 'Patan', image: '/images/project-fellowship.svg', featured: false }
+  { id: 'hospice-care', title: 'Hospice Care Initiative', summary: 'A dignified, compassionate home for patients and families navigating life-limiting illness.', date: '2026-11-15', status: 'upcoming', avenue: 'Service', location: 'Kathmandu', image: '/images/project-service.jpg', featured: true },
+  { id: 'school-library', title: 'Books Open Doors', summary: 'Building joyful reading corners in community schools across the Kathmandu Valley.', date: '2026-08-24', status: 'active', avenue: 'Youth', location: 'Bhaktapur', image: '/images/project-youth.jpg', featured: false },
+  { id: 'clean-water', title: 'Every Drop Counts', summary: 'Reliable clean water access for families in the hills around Kathmandu.', date: '2026-06-18', status: 'completed', avenue: 'Service', location: 'Kavre', image: '/images/project-water.jpg', featured: false },
+  { id: 'career-circle', title: 'Career Circle', summary: 'Practical mentoring conversations connecting young people with local professionals.', date: '2026-05-12', status: 'completed', avenue: 'Professional', location: 'Kathmandu', image: '/images/project-professional.jpg', featured: false },
+  { id: 'community-table', title: 'Community Table', summary: 'An open evening of food, listening and fellowship with neighborhood partners.', date: '2026-04-09', status: 'completed', avenue: 'Fellowship', location: 'Patan', image: '/images/project-fellowship.jpg', featured: false }
 ];
 
 export const news = [
-  { id: 'serve-with-soul', slug: 'serve-with-soul', type: 'Club News', title: 'A new Rotary year, a deeper promise', excerpt: 'Our 2026–27 journey begins with an invitation to serve with more care, courage and soul.', author: 'RCK Editorial', date: '2026-07-01', readTime: '4 min read', tags: ['Club News', 'Service'], image: '/images/news-community.svg' },
-  { id: 'water-project', slug: 'water-project', type: 'Club News', title: 'Every Drop Counts reaches Kavre', excerpt: 'The first tap is flowing, and with it, a community’s new sense of possibility.', author: 'RCK Editorial', date: '2026-06-22', readTime: '3 min read', tags: ['Club News', 'Clean Water'], image: '/images/project-water.svg' },
-  { id: 'fellowship-evening', slug: 'fellowship-evening', type: 'Club News', title: 'An evening of stories and new friends', excerpt: 'Members and guests gathered for an honest conversation about belonging and service.', author: 'RCK Editorial', date: '2026-06-06', readTime: '2 min read', tags: ['Club News', 'Fellowship'], image: '/images/project-fellowship.svg' },
-  ...['Why local listening changes service', 'The quiet power of fellowship', 'Young leaders are already here'].map((title, index) => ({ id: `rotarian-${index + 1}`, slug: `rotarian-${index + 1}`, type: 'Rotarian Articles', title, excerpt: 'A placeholder perspective for our Rotarian readers about people, purpose and practical service.', author: 'Rotarian Editorial', date: `2026-05-${String(20 - index * 4).padStart(2, '0')}`, readTime: '5 min read', tags: ['Rotarian Articles', 'Perspective'], image: '/images/news-community.svg' }))
+  { id: 'serve-with-soul', slug: 'serve-with-soul', type: 'Club News', title: 'A new Rotary year, a deeper promise', excerpt: 'Our 2026–27 journey begins with an invitation to serve with more care, courage and soul.', author: 'RCK Editorial', date: '2026-07-01', readTime: '4 min read', tags: ['Club News', 'Service'], image: '/images/news-community.jpg' },
+  { id: 'water-project', slug: 'water-project', type: 'Club News', title: 'Every Drop Counts reaches Kavre', excerpt: 'The first tap is flowing, and with it, a community’s new sense of possibility.', author: 'RCK Editorial', date: '2026-06-22', readTime: '3 min read', tags: ['Club News', 'Clean Water'], image: '/images/project-water.jpg' },
+  { id: 'fellowship-evening', slug: 'fellowship-evening', type: 'Club News', title: 'An evening of stories and new friends', excerpt: 'Members and guests gathered for an honest conversation about belonging and service.', author: 'RCK Editorial', date: '2026-06-06', readTime: '2 min read', tags: ['Club News', 'Fellowship'], image: '/images/project-fellowship.jpg' },
+  ...['Why local listening changes service', 'The quiet power of fellowship', 'Young leaders are already here'].map((title, index) => ({ id: `rotarian-${index + 1}`, slug: `rotarian-${index + 1}`, type: 'Rotarian Articles', title, excerpt: 'A placeholder perspective for our Rotarian readers about people, purpose and practical service.', author: 'Rotarian Editorial', date: `2026-05-${String(20 - index * 4).padStart(2, '0')}`, readTime: '5 min read', tags: ['Rotarian Articles', 'Perspective'], image: '/images/news-community.jpg' }))
 ];
 
 export const gallery = [
-  { id: 'gallery-1', title: 'Hospice Care Initiative', date: '2026-08-18', avenue: 'Service', image: '/images/project-service.svg' },
-  { id: 'gallery-2', title: 'Books Open Doors', date: '2026-08-24', avenue: 'Youth', image: '/images/project-youth.svg' },
-  { id: 'gallery-3', title: 'Members in fellowship', date: '2026-07-12', avenue: 'Fellowship', image: '/images/project-fellowship.svg' },
-  { id: 'gallery-4', title: 'Every Drop Counts', date: '2026-06-18', avenue: 'Service', image: '/images/project-water.svg' },
-  { id: 'gallery-5', title: 'Community conversation', date: '2026-05-27', avenue: 'Professional', image: '/images/project-professional.svg' },
-  { id: 'gallery-6', title: 'A day outdoors', date: '2026-04-09', avenue: 'Fellowship', image: '/images/project-fellowship.svg' }
+  { id: 'gallery-1', title: 'Hospice Care Initiative', date: '2026-08-18', avenue: 'Service', image: '/images/project-service.jpg' },
+  { id: 'gallery-2', title: 'Books Open Doors', date: '2026-08-24', avenue: 'Youth', image: '/images/project-youth.jpg' },
+  { id: 'gallery-3', title: 'Members in fellowship', date: '2026-07-12', avenue: 'Fellowship', image: '/images/project-fellowship.jpg' },
+  { id: 'gallery-4', title: 'Every Drop Counts', date: '2026-06-18', avenue: 'Service', image: '/images/project-water.jpg' },
+  { id: 'gallery-5', title: 'Community conversation', date: '2026-05-27', avenue: 'Professional', image: '/images/project-professional.jpg' },
+  { id: 'gallery-6', title: 'A day outdoors', date: '2026-04-09', avenue: 'Fellowship', image: '/images/project-fellowship.jpg' }
 ];
 
 export type MemberProfile = { id: string; name: string; role: string; group: string; bio: string; image: string; memberSince: string; profession: string; organization: string; achievements: string[]; interests: string; showContact: boolean; email: string; phone: string };
