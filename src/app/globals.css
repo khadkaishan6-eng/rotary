@@ -49,7 +49,9 @@ main > section:only-child [class*="bg-[#F7A81B]"] { background: var(--gold) !imp
 [class*="bg-[#17458F]"] [class*="text-blue-"], [class*="bg-[#0A2350]"] [class*="text-blue-"], [class*="bg-[#0a2350]"] [class*="text-blue-"], .hero-banner [class*="text-blue-"], footer [class*="text-blue-"] { color: var(--white) !important; }
 [class*="bg-[#17458F]"] [class*="border-slate-"], [class*="bg-[#0A2350]"] [class*="border-slate-"] { border-color: rgb(255 255 255 / 20%) !important; }
 .fade-up { animation: fadeUp 700ms ease both; }
+.spotlight-enter { animation: spotlightEnter 420ms ease both; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spotlightEnter { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
 
 @media (min-width: 640px) { .container-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
 @media (min-width: 1024px) { .container-shell { padding-left: 2rem; padding-right: 2rem; } }
