@@ -12,9 +12,11 @@ const normalize = (member: { id: string; name: string; role: string; group: stri
 export default function MembersPage() {
   const [tab, setTab] = useState(tabs[0]);
   const [query, setQuery] = useState('');
+  const [tabBeforeSearch, setTabBeforeSearch] = useState(tabs[0]);
   const [selected, setSelected] = useState<Profile | null>(null);
   const lastFocused = useRef<HTMLButtonElement | null>(null);
-  const visible = members.filter((member) => member.group === tab && member.name.toLowerCase().includes(query.toLowerCase())).map(normalize);
+  const visible = members.filter((member) => (!query.trim() ? member.group === tab : true) && `${member.name} ${member.role} ${member.bio}`.toLowerCase().includes(query.toLowerCase())).map(normalize);
+  useEffect(() => { if (query.trim() && tab !== tabs[0]) { setTabBeforeSearch(tab); setTab(tabs[0]); } if (!query.trim() && tab === tabs[0] && tabBeforeSearch !== tabs[0]) setTab(tabBeforeSearch); }, [query, tab, tabBeforeSearch]);
   useEffect(() => { if (!selected) return; const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') setSelected(null); }; document.body.style.overflow = 'hidden'; document.addEventListener('keydown', onKeyDown); return () => { document.body.style.overflow = ''; document.removeEventListener('keydown', onKeyDown); lastFocused.current?.focus(); }; }, [selected]);
   return <>
     <section className="hero-banner"><div className="container-shell py-12"><p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F7A81B]">The people of RCK</p><h1 className="mt-4 max-w-3xl font-display leading-tight">Service has many faces. <span className="text-[#F7A81B]">Here are ours.</span></h1><p className="mt-4 max-w-xl text-base leading-7 text-blue-100">Meet the people who bring their time, ideas and care to Rotaract Club of Kasthamandap.</p><p className="mt-4 text-sm text-blue-100">Home / Members</p></div></section>

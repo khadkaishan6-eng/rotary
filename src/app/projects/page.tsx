@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowDownUp, ArrowRight, Search } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ProjectCard } from '@/components/ProjectCard';
 import { projects } from '@/data/site';
 
@@ -11,14 +11,16 @@ const filters = ['All', 'Upcoming', 'Service', 'Fellowship', 'Professional', 'Yo
 export default function ProjectsPage() {
   const [filter, setFilter] = useState('All');
   const [query, setQuery] = useState('');
+  const [filterBeforeSearch, setFilterBeforeSearch] = useState('All');
   const [sort, setSort] = useState('Newest');
   const featured = projects.find((project) => project.featured) ?? projects[0];
   const visibleProjects = useMemo(() => projects.filter((project) => {
-    const matchesFilter = filter === 'All' || (filter === 'Upcoming' ? project.status === 'upcoming' : project.avenue === filter);
+    const matchesFilter = query.trim() ? true : filter === 'All' || (filter === 'Upcoming' ? project.status === 'upcoming' : project.avenue === filter);
     const matchesQuery = `${project.title} ${project.summary} ${project.location}`.toLowerCase().includes(query.toLowerCase());
     return matchesFilter && matchesQuery;
   }).sort((a, b) => sort === 'Oldest' ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date)), [filter, query, sort]);
 
+  useEffect(() => { if (query.trim() && filter !== 'All') { setFilterBeforeSearch(filter); setFilter('All'); } if (!query.trim() && filter === 'All' && filterBeforeSearch !== 'All') setFilter(filterBeforeSearch); }, [query, filter, filterBeforeSearch]);
   return <>
     <section className="hero-banner"><div className="container-shell py-12"><p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F7A81B]">Our work</p><h1 className="mt-4 max-w-3xl font-display leading-tight">Good intentions become useful when they become <span className="text-[#F7A81B]">action.</span></h1><p className="mt-4 max-w-xl text-base leading-7 text-blue-100">Explore practical acts of service that carry our shared purpose forward.</p><p className="mt-4 text-sm text-blue-100">Home / Projects</p></div></section>
     <section className="container-shell py-16 sm:py-20"><div className="relative overflow-hidden rounded-3xl bg-[#17458F] text-white"><div className="absolute inset-0 bg-cover bg-center opacity-35" style={{ backgroundImage: `url(${featured.image})` }} /><div className="relative grid min-h-[390px] items-end p-7 sm:p-10 lg:grid-cols-2"><div><span className="rounded-full bg-[#F7A81B] px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#0d2d60]">This year’s flagship</span><h2 className="mt-5 font-display text-3xl sm:text-4xl">{featured.title}</h2><p className="mt-4 max-w-lg text-sm leading-7 text-blue-50">{featured.summary}</p><Link href={`/projects/${featured.id}`} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#F7A81B]">View project <ArrowRight size={17} /></Link></div></div></div></section>

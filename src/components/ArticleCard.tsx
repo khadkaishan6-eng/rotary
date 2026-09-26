@@ -18,7 +18,7 @@ export function ArticleCard({ article }: { article: Article }) {
       <Link href={`/news/${article.slug ?? article.id}`}>
         <img
           src={article.image}
-          alt=""
+          alt={`Scene from ${article.title}`}
           className="mb-5 aspect-[16/9] w-full rounded-xl object-cover transition duration-500 group-hover:scale-[1.02]"
         />
         <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#17458F]">

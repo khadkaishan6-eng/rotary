@@ -8,7 +8,7 @@ const milestones = [
   { year: '2026', title: 'Serving with soul', text: 'A new Rotary year invites us to lead with empathy, presence and purposeful action.' }
 ];
 
-const images = ['/images/project-service.svg', '/images/project-youth.svg', '/images/project-fellowship.svg'];
+const images = ['https://picsum.photos/seed/rck-about-service/1000/750', 'https://picsum.photos/seed/rck-about-youth/1000/750', 'https://picsum.photos/seed/rck-about-fellowship/1000/750'];
 
 export default function AboutPage() {
   return <>

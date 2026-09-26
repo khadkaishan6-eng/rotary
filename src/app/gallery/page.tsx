@@ -10,10 +10,16 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString('en-US', 
 export default function GalleryPage() {
   const [filter, setFilter] = useState('All');
   const [query, setQuery] = useState('');
+  const [filterBeforeSearch, setFilterBeforeSearch] = useState('All');
   const [selected, setSelected] = useState<number | null>(null);
   const thumbnailRefs = useRef<Array<HTMLButtonElement | null>>([]);
-  const visible = gallery.filter((item) => (filter === 'All' || item.avenue === filter) && `${item.title} ${item.avenue}`.toLowerCase().includes(query.toLowerCase())).sort((a, b) => b.date.localeCompare(a.date));
+  const visible = gallery.filter((item) => (!query.trim() && filter !== 'All' ? item.avenue === filter : true) && `${item.title} ${item.avenue}`.toLowerCase().includes(query.toLowerCase())).sort((a, b) => b.date.localeCompare(a.date));
   const active = selected === null ? null : visible[selected];
+
+  useEffect(() => {
+    if (query.trim() && filter !== 'All') { setFilterBeforeSearch(filter); setFilter('All'); }
+    if (!query.trim() && filter === 'All' && filterBeforeSearch !== 'All') setFilter(filterBeforeSearch);
+  }, [query, filter, filterBeforeSearch]);
 
   useEffect(() => {
     if (selected === null) return;

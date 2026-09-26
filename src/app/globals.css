@@ -2,17 +2,20 @@
 @import 'tailwindcss';
 
 :root {
-  --rotary-blue: #17458f;
-  --rotary-deep: #0a2350;
-  --rotary-gold: #f7a81b;
-  --ink: #24334a;
-  --muted: #66758a;
-  --paper: #f5f7fa;
+  --navy: #17458f;
+  --gold: #f7a81b;
+  --white: #ffffff;
+  --rotary-blue: var(--navy);
+  --rotary-deep: var(--navy);
+  --rotary-gold: var(--gold);
+  --ink: var(--navy);
+  --muted: var(--navy);
+  --paper: var(--white);
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--ink); background: white; font-family: 'DM Sans', sans-serif; }
+body { margin: 0; color: var(--navy); background: var(--white); font-family: 'DM Sans', sans-serif; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
 .font-display { font-family: 'Libre Baskerville', serif; }
@@ -21,6 +24,30 @@ button { cursor: pointer; }
 .hero-banner { min-height: 280px; display: flex; align-items: center; background: var(--rotary-deep); color: white; }
 .hero-banner h1 { font-size: clamp(2rem, 4vw, 3rem); }
 img { display: block; max-width: 100%; }
+.surface-navy { background: var(--navy); color: var(--white); }
+.surface-navy .eyebrow { color: var(--gold); }
+.surface-navy a, .surface-navy h1, .surface-navy h2, .surface-navy h3, .surface-navy p { color: inherit; }
+header { background: var(--navy) !important; color: var(--white); border-color: rgb(255 255 255 / 20%) !important; }
+header [role="dialog"] { background: var(--white) !important; color: var(--navy); }
+main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4), main:has(img[src*="rck-hero-community"]) > section:nth-of-type(6), main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) { background: var(--navy) !important; color: var(--white); }
+main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) h2, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) h3, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(6) h2, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) h2 { color: var(--white) !important; }
+main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) [class*="bg-white"], main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) article { background: var(--white) !important; color: var(--navy); }
+main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) [class*="bg-white"] h3, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) [class*="bg-white"] p, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) article h3, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) article p { color: var(--navy) !important; }
+main > section:only-child { background: var(--navy) !important; color: var(--white); }
+main > section:only-child h1, main > section:only-child h2, main > section:only-child h3, main > section:only-child p, main > section:only-child .eyebrow { color: var(--white) !important; }
+main > section:only-child form, main > section:only-child [class*="bg-white"], main > section:only-child [class*="bg-[#f2f7fb]"] { background: var(--white) !important; color: var(--navy); }
+main > section:only-child form h2, main > section:only-child form p, main > section:only-child form label, main > section:only-child form .eyebrow { color: var(--navy) !important; }
+main > section:only-child button { background: var(--white); color: var(--navy); }
+main > section:only-child [class*="bg-[#F7A81B]"] { background: var(--gold) !important; color: var(--navy) !important; }
+
+/* Normalize legacy utilities to the three-color system. */
+[class*="border-slate-"], [class*="border-blue-"] { border-color: rgb(23 69 143 / 15%) !important; }
+[class*="bg-slate-"], [class*="bg-[#F5F7FA]"], [class*="bg-[#f5f7fa]"], [class*="bg-[#f2f7fb]"], [class*="bg-[#dcecf5]"], [class*="bg-[#eaf6fb]"] { background-color: var(--white) !important; }
+[class*="text-slate-"], [class*="text-gray-"], [class*="text-[#00A2E0]"] { color: var(--navy) !important; }
+[class*="bg-[#0A2350]"], [class*="bg-[#0a2350]"], [class*="bg-[#0d2d60]"] { background-color: var(--navy) !important; }
+[class*="text-[#0A2350]"], [class*="text-[#0a2350]"], [class*="text-[#0d2d60]"] { color: var(--navy) !important; }
+[class*="bg-[#17458F]"] [class*="text-blue-"], [class*="bg-[#0A2350]"] [class*="text-blue-"], [class*="bg-[#0a2350]"] [class*="text-blue-"], .hero-banner [class*="text-blue-"], footer [class*="text-blue-"] { color: var(--white) !important; }
+[class*="bg-[#17458F]"] [class*="border-slate-"], [class*="bg-[#0A2350]"] [class*="border-slate-"] { border-color: rgb(255 255 255 / 20%) !important; }
 .fade-up { animation: fadeUp 700ms ease both; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
