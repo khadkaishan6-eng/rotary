@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { site } from '@/data/site';
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rckasthamandap.org'),
-  title: { default: 'Rotary Club of Kasthamandap', template: '%s | Rotary Club of Kasthamandap' },
+  icons: { icon: '/logos/logo-club.png' },
+  metadataBase: new URL('https://rckasthamandap.org.np'),
+  title: { default: site.clubName, template: `%s | ${site.clubName}` },
   description: 'Serving Kathmandu with compassion, fellowship and purposeful action. Rotary International District 3292.',
-  openGraph: { title: 'Rotary Club of Kasthamandap', description: 'Serve with Soul', type: 'website' }
+  openGraph: { title: site.clubName, description: site.theme, type: 'website' }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { site } from '@/data/site';
 
 const questions = [
   ['What does Rotary primarily bring together?', 'People committed to service'],
@@ -11,7 +12,7 @@ const questions = [
   ['Who can participate in service?', 'Anyone who wants to help'],
   ['What is District 3292?', 'The Rotary district including Nepal and Bhutan'],
   ['What should a project aim for?', 'Sustainable local impact'],
-  ['What is this year’s RCK theme?', 'Serve with Soul'],
+  ['What is this year’s RCK theme?', site.theme],
   ['What is the first step to joining?', 'Start a conversation']
 ];
 

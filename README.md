@@ -27,3 +27,8 @@ Run `npm run build` locally before deploying. Deploy the repository to Vercel, a
 ## Accessibility and SEO
 
 The site uses semantic sections, visible focus-compatible controls, descriptive link labels, responsive layouts, metadata, and a readable color contrast palette. Add final Open Graph imagery in `src/app/layout.tsx` when the official club photography is ready.
+
+
+## Imported club archive
+
+The previous club website's public content is now included in Members, Presidents, Projects, News, Gallery, About and `/archive`. See [LEGACY-MIGRATION.md](LEGACY-MIGRATION.md) for source inventory, chronology conflicts, replacement-photo instructions and validation. Run `python3 scripts/validate_legacy.py` to verify original downloads and imported record consistency. Remaining editorial confirmations are listed in [PLACEHOLDER-DATA.md](PLACEHOLDER-DATA.md).

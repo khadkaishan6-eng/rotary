@@ -27,12 +27,8 @@ img { display: block; max-width: 100%; }
 .surface-navy { background: var(--navy); color: var(--white); }
 .surface-navy .eyebrow { color: var(--gold); }
 .surface-navy a, .surface-navy h1, .surface-navy h2, .surface-navy h3, .surface-navy p { color: inherit; }
-header { background: var(--navy) !important; color: var(--white); border-color: rgb(255 255 255 / 20%) !important; }
+
 header [role="dialog"] { background: var(--white) !important; color: var(--navy); }
-main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4), main:has(img[src*="rck-hero-community"]) > section:nth-of-type(6), main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) { background: var(--navy) !important; color: var(--white); }
-main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) h2, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) h3, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(6) h2, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) h2 { color: var(--white) !important; }
-main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) [class*="bg-white"], main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) article { background: var(--white) !important; color: var(--navy); }
-main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) [class*="bg-white"] h3, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(4) [class*="bg-white"] p, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) article h3, main:has(img[src*="rck-hero-community"]) > section:nth-of-type(8) article p { color: var(--navy) !important; }
 main > section:only-child { background: var(--navy) !important; color: var(--white); }
 main > section:only-child h1, main > section:only-child h2, main > section:only-child h3, main > section:only-child p, main > section:only-child .eyebrow { color: var(--white) !important; }
 main > section:only-child form, main > section:only-child [class*="bg-white"], main > section:only-child [class*="bg-[#f2f7fb]"] { background: var(--white) !important; color: var(--navy); }
@@ -48,10 +44,110 @@ main > section:only-child [class*="bg-[#F7A81B]"] { background: var(--gold) !imp
 [class*="text-[#0A2350]"], [class*="text-[#0a2350]"], [class*="text-[#0d2d60]"] { color: var(--navy) !important; }
 [class*="bg-[#17458F]"] [class*="text-blue-"], [class*="bg-[#0A2350]"] [class*="text-blue-"], [class*="bg-[#0a2350]"] [class*="text-blue-"], .hero-banner [class*="text-blue-"], footer [class*="text-blue-"] { color: var(--white) !important; }
 [class*="bg-[#17458F]"] [class*="border-slate-"], [class*="bg-[#0A2350]"] [class*="border-slate-"] { border-color: rgb(255 255 255 / 20%) !important; }
-.fade-up { animation: fadeUp 700ms ease both; }
-.spotlight-enter { animation: spotlightEnter 420ms ease both; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes spotlightEnter { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
 
 @media (min-width: 640px) { .container-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
 @media (min-width: 1024px) { .container-shell { padding-left: 2rem; padding-right: 2rem; } }
+/* Restrained Home surfaces: no blur, glow or animated section transitions. */
+main:has(.home-hero) { margin: 0; padding: 0; }
+.site-header { top: 0; z-index: 50; width: 100%; border: 0; color: var(--white); transition: none; }
+.home-header { position: fixed; background: transparent; }
+.interior-header { position: sticky; }
+.site-header[data-solid="true"] { background: var(--navy); box-shadow: none; }
+.club-logo { height: 56px; width: auto; max-width: 150px; object-fit: contain; background: transparent; border: 0; border-radius: 0; filter: none; }
+.club-wheel-link { border: 0; border-radius: 0; background: transparent; }
+.home-hero { position: relative; isolation: isolate; overflow: hidden; margin: 0; padding: 108px 0 0; background: var(--navy); color: var(--white); }
+.hero-background { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; opacity: .1; }
+.hero-impact { border: 0; box-shadow: none; }
+.leader-lineup { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; max-width: 1050px; margin: 4px auto 0; outline-offset: -3px; }
+.leader-figure { position: relative; height: 350px; min-width: 0; margin: 0; padding: 0; border: 0; background: transparent; }
+.leader-cutout { position: absolute; bottom: var(--portrait-bottom, 0); left: 50%; width: 116%; max-width: none; height: var(--portrait-height, 100%); object-fit: contain; object-position: center bottom; transform: translateX(-50%); }
+.leader-figure:nth-child(2) { z-index: 1; }
+
+.leader-caption { position: absolute; z-index: 2; inset: auto -1px 0; min-height: 112px; padding: 16px 12px 24px; background: transparent; }
+.home-section { --section-color: var(--white); position: relative; margin: 0; border: 0; background: var(--section-color); }
+.home-section[data-surface="navy"] { --section-color: var(--navy); color: var(--white); }
+.home-section[data-surface="gold"] { --section-color: var(--gold); }
+.home-section[data-surface="navy"] h2, .home-section[data-surface="navy"] > .container-shell > .flex a { color: var(--white); }
+.home-section[data-surface="navy"] .eyebrow { color: var(--gold); }
+.home-section[data-surface="navy"] article { color: var(--navy); }
+.home-section[data-surface="navy"] article h2, .home-section[data-surface="navy"] article h3 { color: var(--navy); }
+.home-section[data-surface="navy"] article.group { padding: 20px; border-radius: 12px; background: var(--white); }
+body:has(.home-hero) > footer > .border-t { border-top: 0; }
+@media (max-width: 639px) {
+  .home-hero { padding-top: 100px; }
+  .leader-lineup { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 88%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .leader-lineup::-webkit-scrollbar { display: none; }
+  .leader-figure { height: 340px; overflow: hidden; scroll-snap-align: center; }
+  .leader-caption { padding-left: 16px; padding-right: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
+.leadership-intro { max-width: 850px; margin: 0 auto; text-align: center; }
+.leadership-message-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 44px; }
+.leadership-message-card { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1fr); overflow: hidden; border: 1px solid rgb(23 69 143 / 16%); border-radius: 16px; background: var(--white); color: var(--navy); }
+.leadership-message-photo { min-width: 0; background: rgb(23 69 143 / 4%); }
+.leadership-message-photo img { width: 100%; height: 100%; min-height: 440px; object-fit: cover; object-position: center top; }
+.leadership-message-copy { position: relative; padding: 44px 26px 28px; }
+.leadership-message-copy blockquote { position: relative; font-size: 15px; font-style: italic; line-height: 1.85; }
+.leadership-quote { position: absolute; right: 20px; top: 4px; color: var(--gold); font-family: Georgia, serif; font-size: 64px; line-height: 1; }
+@media (max-width: 1023px) { .leadership-message-grid { grid-template-columns: 1fr; max-width: 760px; margin-left: auto; margin-right: auto; } .leadership-message-photo img { min-height: 380px; } }
+@media (max-width: 479px) { .leadership-message-card { grid-template-columns: 1fr; } .leadership-message-photo img { height: 300px; min-height: 0; object-fit: contain; object-position: center bottom; } .leadership-message-copy { padding: 40px 24px 28px; } }
+main:has(.home-hero) .group:hover { transform: none; }
+main:has(.home-hero) .group:hover img { transform: none; }
+
+.member-portrait { object-position: center top; }
+.president-profile-photo { display: block; width: min(100%, 260px); max-width: 260px; height: 260px; margin: 16px auto 0; object-fit: contain; object-position: center top; }
+
+/* Club publications and leadership: quiet detail, clear hierarchy. */
+.publication-eyebrow { color: var(--gold); font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.archive-anchor { display: inline-flex; align-items: center; padding: 10px 18px; border: 1px solid rgb(255 255 255 / 30%); border-radius: 999px; font-size: .8rem; font-weight: 700; }
+.archive-anchor:hover, .archive-anchor:focus-visible { background: var(--white); color: var(--navy); }
+.archive-section, .presidents-history { scroll-margin-top: 104px; }
+.section-heading-row { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+.collection-count { border-radius: 999px; padding: 10px 16px; background: rgb(23 69 143 / 5%); font-size: .8rem; font-weight: 700; white-space: nowrap; }
+.archive-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin: 28px 0 20px; padding: 20px; border: 1px solid rgb(23 69 143 / 12%); border-radius: 14px; }
+.archive-search { display: flex; gap: 12px; align-items: center; flex: 1 1 280px; }
+.archive-search input { min-width: 0; width: 100%; background: transparent; padding: 10px 0; outline-offset: 6px; }
+.publication-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.publication-card { min-width: 0; overflow: hidden; border: 1px solid rgb(23 69 143 / 14%); border-radius: 14px; background: var(--white); }
+.publication-cover { position: relative; min-height: 190px; padding: 24px; border-left: 6px solid var(--gold); background: rgb(23 69 143 / 4%); }
+.publication-cover > svg { margin-bottom: 22px; }
+.publication-cover > span { position: absolute; top: 28px; right: 24px; font-size: .75rem; letter-spacing: .12em; }
+.publication-cover h3 { font-size: 1.5rem; }
+.publication-cover p { margin-top: 8px; font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; }
+.publication-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; font-size: .8rem; font-weight: 700; text-underline-offset: 4px; }
+.publication-link:hover { text-decoration: underline; }
+.publication-empty { display: grid; justify-items: center; padding: 56px 20px; border: 1px dashed rgb(23 69 143 / 25%); border-radius: 14px; text-align: center; }
+.souvenir-panel { display: grid; grid-template-columns: 180px 1fr; align-items: center; gap: 36px; padding: 36px; border: 1px solid rgb(23 69 143 / 14%); border-radius: 18px; }
+.souvenir-symbol { display: grid; place-items: center; height: 200px; border-left: 5px solid var(--gold); background: rgb(23 69 143 / 5%); }
+.recognition-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 15px; list-style: none; padding: 0; }
+.recognition-tag { display: inline-flex; align-items: center; padding: 4px 8px; border: 1px solid rgb(23 69 143 / 12%); border-radius: 5px; background: rgb(23 69 143 / 3%); color: var(--navy); font-size: .65rem; font-weight: 500; line-height: 1.5; }
+.recognition-tags-full { align-items: flex-start; gap: 14px 18px; }
+.recognition-tags-full .recognition-tag { font-size: .75rem; }
+.recognition-record { display: block; margin-top: 5px; font-size: .65rem; line-height: 1.6; }
+.presidents-intro { background: var(--navy); color: var(--white); }
+.presidents-intro-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+.current-president-feature { display: grid; grid-template-columns: .85fr 1fr; align-items: end; overflow: hidden; border: 1px solid rgb(255 255 255 / 25%); border-radius: 18px; background: rgb(255 255 255 / 4%); }
+.current-president-photo { height: 340px; padding: 20px 0 0 14px; }
+.current-president-copy { padding: 28px 24px 32px 16px; }
+.president-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.president-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid rgb(23 69 143 / 14%); border-radius: 14px; background: var(--white); color: var(--navy); text-align: left; }
+.president-card:hover { border-color: var(--navy); }
+.president-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.president-card-portrait { height: 240px; width: 100%; padding: 18px 18px 0; background: rgb(23 69 143 / 4%); }
+.president-card-image { display: block; height: 100%; width: 100%; object-fit: contain; object-position: center top; }
+.president-card-copy { width: 100%; padding: 22px; border-top: 3px solid transparent; }
+.charter-card .president-card-copy { border-top-color: var(--gold); }
+.president-year { font-size: .85rem; font-weight: 700; }
+.president-dialog { width: calc(100% - 32px); max-width: 740px; max-height: 90dvh; margin: auto; padding: 32px; overflow-y: auto; border: 1px solid rgb(23 69 143 / 20%); border-radius: 18px; background: var(--white); color: var(--navy); }
+.president-dialog::backdrop { background: rgb(23 69 143 / 85%); }
+.president-dialog-close { display: grid; place-items: center; width: 40px; height: 40px; margin-left: auto; border: 1px solid rgb(23 69 143 / 15%); border-radius: 50%; }
+.president-dialog-header { display: grid; grid-template-columns: 180px 1fr; align-items: center; gap: 28px; margin-top: 16px; }
+.president-dialog-photo { display: block; width: 180px; height: 205px; object-fit: contain; background: rgb(23 69 143 / 3%); }
+@media (max-width: 1100px) { .president-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .presidents-intro-grid { gap: 32px; grid-template-columns: 1fr; } .current-president-feature { max-width: 600px; } }
+@media (max-width: 767px) { .publication-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .president-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } .president-card-portrait { height: 210px; padding: 12px 12px 0; } .president-card-copy { padding: 18px; } .presidents-intro-grid { padding-top: 44px; padding-bottom: 44px; } }
+@media (max-width: 479px) { .publication-grid { grid-template-columns: 1fr; } .souvenir-panel { grid-template-columns: 1fr; padding: 24px; gap: 24px; } .souvenir-symbol { height: 140px; } .president-grid { grid-template-columns: 1fr; } .president-card { display: grid; grid-template-columns: 110px 1fr; align-items: stretch; } .president-card-portrait { height: 100%; min-height: 175px; padding: 12px 8px; } .president-card-copy { padding: 20px 16px; } .current-president-feature { grid-template-columns: 130px 1fr; } .current-president-photo { height: 280px; padding-left: 0; } .current-president-copy { padding: 24px 16px 24px 10px; } .president-dialog { padding: 20px; } .president-dialog-header { grid-template-columns: 1fr; gap: 20px; } .president-dialog-photo { width: 145px; height: 165px; } }
+
+.publication-card { overflow-wrap: anywhere; }
+.spotlight-recognitions .recognition-tag { background: rgb(255 255 255 / 95%); }
+
+.mobile-navigation { max-height: calc(100dvh - 80px); overflow-y: auto; }

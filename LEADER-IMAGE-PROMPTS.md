@@ -1,0 +1,15 @@
+# Leadership image editing prompts
+
+Mode: built-in image generation/editing tool, actual transparent backgrounds. Inputs: the three photographs supplied in chat. The user provided the names and office mapping.
+
+## Sailesh Vaidya
+
+Use case: background-extraction, identity-preserve. Edit target: ONLY the man wearing the SKY BLUE / TURQUOISE blazer in the second of the three user-supplied portraits. The other two photographs are context only; output exactly ONE man, no collage. Remove his blue studio background to genuine alpha transparency. Preserve his exact identity, facial features, skin texture, expression, pose, turquoise blazer, tie, lapel pin, shirt, and original photographer attribution. Do not beautify, redraw or change the person. Prepare a centered upper-body cutout for a website leadership lineup. Use a portrait canvas, 768x1024 if possible, modest clear space above the head, eyes near 28% of canvas height, chin near 46%, jacket extends to bottom edge. Preserve natural proportions; no head, shoulder or hat clipping. Do not add backgrounds, shadows, glows, text or any new objects. Output transparent PNG.
+
+## Vishnu Bdr. Karkee
+
+Use case: background-extraction, identity-preserve. Edit target: ONLY the bald smiling man in the DARK NAVY BLUE blazer, patterned blue tie and colorful yellow/blue pocket square, originally photographed against a white textured wall in the user's FIRST portrait. Ignore turquoise-blazer and black-outfit portraits and any earlier generated asset. Output exactly ONE man, no collage. Remove the white wall completely to actual alpha transparency. Preserve the exact man's identity, face, skin texture, expression, clothing, pocket square, badges, tie and pose; do not beautify or redesign. Center his upper-body cutout on a portrait canvas, 768x1024 if possible. Frame for a leadership lineup: eyes near 28% of canvas height, chin near 46%, modest clear space above the head, shoulder level similar to the turquoise-blazer portrait, jacket reaches bottom edge. Preserve natural anatomy and proportions, no clipping of head or shoulders. No background, floor, shadow, glow, extra text or objects. Transparent PNG.
+
+## Olayinka Hakeem Babalola
+
+Use case: background-extraction, identity-preserve. Edit target: ONLY the man wearing a BLACK outfit, black rectangular glasses, and a patterned red/blue traditional hat from the user's third original portrait. Ignore all blue-blazer portraits and generated assets. Exactly ONE man, no collage. Remove the grey studio background to genuine alpha transparency. Preserve his exact identity, face, skin, expression, glasses, hat, black clothing, pins and original pose. Do not beautify, change or redraw the person or remove his hat. Produce a centered upper-body cutout on a portrait canvas, 768x1024 if possible, matching the scale and eye level of the other two leaders (eyes near 28% height and chin near 46%). Keep the entire hat and head with a little clear padding above, shoulders fully framed, torso reaches bottom. Preserve natural proportions; do not stretch. No background, shadow, glow, text, floor or added objects. Transparent PNG.
