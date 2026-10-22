@@ -16,10 +16,10 @@ export default function Home() {
       <div className="container-shell relative text-center">
         <h1 className="font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">Service <span className="text-[#F7A81B]">Above Self</span></h1>
         <div aria-label="Our impact" className="hero-impact mt-5 grid grid-cols-2 py-3 sm:grid-cols-5">{[...site.impact, { value: site.totalContributionValue, label: 'in community contributions' }].map((item) => <div key={item.label} className="px-2 py-2 last:col-span-2 sm:last:col-span-1"><p className="font-display text-2xl text-[#F7A81B] lg:text-3xl">{item.value}</p><p className="mt-1 text-xs font-bold uppercase tracking-wide">{item.label}</p></div>)}</div>
-        <div className="leader-lineup" role="region" aria-label="Leadership lineup" tabIndex={0}>
-          {leaders.map((leader) => <article key={leader.id} className="leader-figure" style={{ '--portrait-height': leader.portrait.height, '--portrait-bottom': leader.portrait.bottom } as CSSProperties}>
-            <img src={publicImage(leader.photo, '/images/leaders/person-placeholder.svg')} alt={`Portrait of ${leader.name}`} className="leader-cutout" />
-            <div className="leader-caption"><h2 className="text-base font-bold text-white">{leader.name}</h2><p className="mt-1 text-sm text-[#F7A81B]">{leader.title}</p><p className="mt-1 text-xs text-white">{leader.org}</p></div>
+        <div className="leader-lineup" role="region" aria-label="Leadership lineup">
+          {leaders.map((leader) => <article key={leader.id} className="leader-figure" style={{ '--portrait-width': leader.portrait.width, '--portrait-top': leader.portrait.top } as CSSProperties}>
+            <div className="leader-portrait-stage"><img src={publicImage(leader.photo, '/images/leaders/person-placeholder.svg')} alt={`Portrait of ${leader.name}`} className="leader-cutout" /></div>
+            <div className="leader-caption"><h2>{leader.name}</h2><p className="leader-title">{leader.title}</p><p className="leader-organisation">{leader.org}</p></div>
           </article>)}
         </div>
       </div>

@@ -38,9 +38,9 @@ export type Recognition = { label: string; shortLabel?: string; years?: string; 
 export type MemberProfile = { recognitions: Recognition[]; status: 'current' | 'past'; joinedYear?: number; leftYear?: number; lastRole?: string; contributions?: string[]; whereNow?: string; presidentId?: string; id: string; name: string; role: string; group: string; bio: string; image: string; photoCrop?: PhotoCrop; memberSince: string; profession: string; organization: string; achievements: string[]; interests: string; showContact: boolean; email: string; phone: string; isPastPresident?: boolean; isMajorDonor?: boolean; sourceUrl?: string; sourceImage?: string; sourceYear?: string; directoryText?: string; recognition?: string; legacyRole?: string };
 // Update this leadership lineup and its transparent portraits each Rotary year.
 export const leaders = [
-  { id: 'sponsor-president', name: 'Sailesh Vaidya', title: 'President', photo: '/images/leaders/rotary-club-president.png', portrait: { height: '96%', bottom: '0%' }, org: site.clubName },
-  { id: 'district-governor', name: 'Vishnu Bdr. Karkee', title: 'District Governor', photo: '/images/leaders/district-governor.png', portrait: { height: '104%', bottom: '-6%' }, org: 'Rotary District 3292' },
-  { id: 'ri-president', name: 'Olayinka Hakeem Babalola', title: 'President', photo: '/images/leaders/ri-president.png', portrait: { height: '82%', bottom: '19%' }, org: 'Rotary International' }
+  { id: 'sponsor-president', name: 'Sailesh Vaidya', title: 'President', photo: '/images/leaders/rotary-club-president.png', portrait: { width: '97%', top: '0%' }, org: site.clubName },
+  { id: 'district-governor', name: 'Vishnu Bdr. Karkee', title: 'District Governor', photo: '/images/leaders/district-governor.png', portrait: { width: '97%', top: '1.5%' }, org: 'Rotary District 3292' },
+  { id: 'ri-president', name: 'Olayinka Hakeem Babalola', title: 'President', photo: '/images/leaders/ri-president.png', portrait: { width: '75%', top: '-2%' }, org: 'Rotary International' }
 ];
 export const clubPresident = leaders[0];
 export const districtGovernor = leaders[1];
