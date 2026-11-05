@@ -5,7 +5,7 @@ import { ArrowRight, ChevronRight, HeartHandshake, Users } from 'lucide-react';
 import { ArticleCard } from '@/components/ArticleCard';
 import { MemberSpotlight } from '@/components/MemberSpotlight';
 import { ProjectCard } from '@/components/ProjectCard';
-import { boardGroup, gallery, leaders, members, messages, news, projects, site } from '@/data/site';
+import { boardGroup, clubPresident, districtGovernor, gallery, members, messages, news, projects, riPresident, site } from '@/data/site';
 
 export default function Home() {
   const featured = projects.find((project) => project.featured) ?? projects[0];
@@ -17,7 +17,7 @@ export default function Home() {
         <h1 className="font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">Service <span className="text-[#F7A81B]">Above Self</span></h1>
         <div aria-label="Our impact" className="hero-impact mt-5 grid grid-cols-2 py-3 sm:grid-cols-5">{[...site.impact, { value: site.totalContributionValue, label: 'in community contributions' }].map((item) => <div key={item.label} className="px-2 py-2 last:col-span-2 sm:last:col-span-1"><p className="font-display text-2xl text-[#F7A81B] lg:text-3xl">{item.value}</p><p className="mt-1 text-xs font-bold uppercase tracking-wide">{item.label}</p></div>)}</div>
         <div className="leader-lineup" role="region" aria-label="Leadership lineup">
-          {leaders.map((leader) => <article key={leader.id} className="leader-figure" style={{ '--portrait-width': leader.portrait.width, '--portrait-top': leader.portrait.top } as CSSProperties}>
+          {[riPresident, districtGovernor, clubPresident].map((leader) => <article key={leader.id} className="leader-figure" style={{ '--portrait-width': leader.portrait.width, '--portrait-top': leader.portrait.top } as CSSProperties}>
             <div className="leader-portrait-stage"><img src={publicImage(leader.photo, '/images/leaders/person-placeholder.svg')} alt={`Portrait of ${leader.name}`} className="leader-cutout" /></div>
             <div className="leader-caption"><h2>{leader.name}</h2><p className="leader-title">{leader.title}</p><p className="leader-organisation">{leader.org}</p></div>
           </article>)}
@@ -28,7 +28,7 @@ export default function Home() {
     <section className="home-section py-16 md:py-20" data-surface="white"><div className="container-shell"><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">About RCK</p><h2 className="mt-3 font-display text-3xl text-[#17458F]">A little more care, in action.</h2></div><Link href="/about" className="hidden items-center gap-2 text-sm font-bold text-[#17458F] sm:flex">Read more <ArrowRight size={17} /></Link></div><div className="mt-8 grid gap-4 sm:grid-cols-3"><img src="/legacy/media/181-Handover-photo.jpg" alt="Club Silver Jubilee handover" className="aspect-[4/3] w-full rounded-xl object-cover" /><img src="/legacy/media/182-President-speech-photo.jpg" alt="President speaking at the Silver Jubilee" className="aspect-[4/3] w-full rounded-xl object-cover" /><div className="flex flex-col justify-center bg-[#F5F7FA] p-7"><p className="text-base leading-7 text-slate-600">We are a community of professionals, friends and neighbors connected by practical optimism and a belief in human-centered service.</p><Link href="/about" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#17458F] sm:hidden">Read more <ArrowRight size={16} /></Link></div></div></div></section>
     <section className="home-section leadership-messages py-16 md:py-20" data-surface="white" aria-labelledby="leadership-heading">
       <div className="container-shell">
-        <div className="leadership-intro"><p className="eyebrow">Leadership messages</p><h2 id="leadership-heading" className="mt-3 font-display text-3xl text-[#17458F] sm:text-4xl">Messages from Our Leadership</h2><p className="mt-4 text-base text-[#17458F]">A word from our Club President and District Governor for RY {site.rotaryYear}.</p></div>
+        <div className="leadership-intro"><h2 id="leadership-heading" className="font-display text-3xl font-bold text-[#17458F] sm:text-4xl">Leadership Messages</h2><p className="mt-4 text-base text-[#17458F]">A word from our Club President and District Governor for RY {site.rotaryYear}.</p></div>
         <div className="leadership-message-grid">{messages.map((message) => <article key={message.id} className="leadership-message-card">
           <div className="leadership-message-photo"><img src={publicImage(message.image, '/images/leaders/person-placeholder.svg')} alt={message.name} /></div>
           <div className="leadership-message-copy"><span aria-hidden="true" className="leadership-quote">“</span><blockquote className="font-display">{message.message}</blockquote><div className="mt-6"><h3 className="font-display text-xl font-bold">{message.name}</h3><p className="mt-2 text-xs font-bold uppercase tracking-wide">{message.title}, {message.org}</p><p className="mt-2 text-xs">RY {message.year}</p>{message.isDraft && <p className="mt-3 text-xs text-[#17458F]/70">Draft message · awaiting approval</p>}</div></div>

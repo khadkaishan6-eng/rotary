@@ -88,14 +88,19 @@ export const archive = legacy;
 export const foundingTenureStart = Number(legacy.charterDate.slice(0, 4));
 export const tenureYears = Array.from({ length: 2026 - foundingTenureStart + 1 }, (_, i) => { const year = 2026 - i; return `${year}-${String(year + 1).slice(-2)}`; });
 export type President = { id: string; name: string; photo: string; photoCrop?: PhotoCrop; tenure: string; order: number; isCharter: boolean; isPlaceholder: boolean; bio: string; projects: { title: string; year: string; description: string }[]; financialContribution: string; achievements: string[]; sourceUrl?: string };
-const knownTenures: Record<string, string> = legacy.presidentTenures;
+// Club-confirmed years take precedence over incomplete archive records.
+const confirmedTenures: Record<string, string> = {
+  'pradeep-kumar-shrestha': '2003-04',
+  'umesh-shrestha': '2010-11'
+};
+const knownTenures: Record<string, string> = { ...legacy.presidentTenures, ...confirmedTenures };
 export const presidents: President[] = members.filter(person => person.isPastPresident || person.id === 'bod-0').map(person => ({
   id: person.presidentId!, name: person.name, photo: person.image, photoCrop: person.photoCrop,
   tenure: person.id === 'bod-0' ? currentTenureYear : knownTenures[person.id] ?? (person.id === 'gajendra-bdr-shrestha' ? 'Charter president · 2001' : 'Tenure not recorded'),
   order: person.id === 'gajendra-bdr-shrestha' ? 0 : knownTenures[person.id] ? Number(knownTenures[person.id].slice(0,4)) : 3000,
   isCharter: person.id === 'gajendra-bdr-shrestha', isPlaceholder: false,
-  bio: person.id === 'bod-0' ? person.bio : person.id === 'prof-dr-manohar-lal-shrestha' ? 'Recorded as club president at the Silver Jubilee celebration in January 2026.' : `${person.name} is identified as ${person.id === 'gajendra-bdr-shrestha' ? 'charter president' : 'a past president'} in the club archive. ${knownTenures[person.id] ? 'The Rotary year is documented on the Silver Jubilee banner or in the archived bulletins and reports.' : 'The source does not establish the exact Rotary year.'}`,
-  projects: [], financialContribution: '', achievements: [], sourceUrl: person.id === 'gajendra-bdr-shrestha' ? legacy.charterSource : knownTenures[person.id] ? legacy.presidentTenureSource : person.sourceUrl
+  bio: person.id === 'bod-0' ? person.bio : person.id === 'prof-dr-manohar-lal-shrestha' ? 'Recorded as club president at the Silver Jubilee celebration in January 2026.' : `${person.name} is identified as ${person.id === 'gajendra-bdr-shrestha' ? 'charter president' : 'a past president'} in the club archive. ${confirmedTenures[person.id] ? 'The Rotary year has been confirmed by the club.' : knownTenures[person.id] ? 'The Rotary year is documented on the Silver Jubilee banner or in the archived bulletins and reports.' : 'The source does not establish the exact Rotary year.'}`,
+  projects: [], financialContribution: '', achievements: [], sourceUrl: person.id === 'gajendra-bdr-shrestha' ? legacy.charterSource : !confirmedTenures[person.id] && knownTenures[person.id] ? legacy.presidentTenureSource : person.sourceUrl
 }));
 export const pastPresidents = presidents.filter(person => person.tenure !== currentTenureYear).sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
 export const presidentById = Object.fromEntries(presidents.map(person => [person.id, person]));
@@ -109,7 +114,7 @@ export const messages = [
 export const searchItems = [
   ...projects.map(item => ({ type: 'Projects', title: item.title, description: item.summary, href: `/projects/${item.id}`, image: item.image })),
   ...gallery.map(item => ({ type: 'Gallery', title: item.title, description: `${item.avenue} gallery moment`, href: `/gallery#${item.id}`, image: item.image })),
-  ...members.map(item => ({ type: 'Members', title: item.name, description: `${item.role} · ${item.profession} · ${item.legacyRole} · ${item.recognitions.map(tag => `${tag.label} ${tag.shortLabel ?? ''}`).join(' ')}`, href: `/members?person=${item.id}`, image: item.id === 'bod-0' ? item.image : '/images/leaders/person-placeholder.svg' })),
+  ...members.map(item => ({ type: 'Members', title: item.name, description: `${item.role}${item.presidentId ? ` · President ${presidentById[item.presidentId].tenure}` : ''} · ${item.profession} · ${item.legacyRole} · ${item.recognitions.map(tag => `${tag.label} ${tag.shortLabel ?? ''}`).join(' ')}`, href: `/members?person=${item.id}`, image: item.id === 'bod-0' ? item.image : '/images/leaders/person-placeholder.svg' })),
   ...news.map(item => ({ type: 'News', title: item.title, description: item.excerpt, href: `/news/${item.slug}`, image: item.image })),
   ...media.filter(item => item.mimeType === 'application/pdf').map(item => ({ type: 'Bulletins', title: item.title, description: 'Historical club bulletin · PDF', href: item.localUrl, image: '/images/legacy-article.svg' })),
   { type: 'Archive', title: 'Club Archive · bulletins and souvenirs', description: 'Club publications, annual souvenirs and historical boards', href: '/archive', image: '/images/legacy-article.svg' }
